@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="br.edu.ifba.saj.ads.poo.RestauranteController">
+    
+    <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+
+    <Label text="GESTÃO DE RESTAURANTE E PEDIDOS" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    <Separator/>
+
+    <Label text="Cadastro de Cardápio"/>
+    <HBox spacing="10">
+        <TextField fx:id="txtNomeItem" promptText="Nome do Prato/Bebida"/>
+        <TextField fx:id="txtPreco" promptText="Preço" prefWidth="80"/>
+        <TextField fx:id="txtDescricao" promptText="Descrição"/>
+        <Button text="Salvar Item" onAction="#cadastrarNoCardapio"/>
+    </HBox>
+
+    <Separator/>
+
+    <Label text="Realizar Pedido"/>
+    <HBox spacing="10">
+        <TextField fx:id="txtCliente" promptText="Nome do Cliente"/>
+        <Button text="Iniciar Pedido" onAction="#criarPedido"/>
+    </HBox>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Item:"/>
+        <ComboBox fx:id="cbCardapio" prefWidth="200"/>
+        <Button text="Adicionar" onAction="#adicionarAoPedido"/>
+    </HBox>
+
+    <ListView fx:id="listaItensPedido" prefHeight="100"/>
+    
+    <Label fx:id="lblTotal" text="Total: R$ 0.0"/>
+    <Button text="Finalizar Pedido" onAction="#finalizarPedido"/>
+
+    <Separator/>
+
+    <Label text="Histórico de Pedidos"/>
+    <TableView fx:id="tabelaPedidos" prefHeight="150">
+        <columns>
+            <TableColumn fx:id="colCliente" text="Cliente" prefWidth="100"/>
+            <TableColumn fx:id="colQuantidade" text="Qtd." prefWidth="50"/>
+            <TableColumn fx:id="colItens" text="Itens Escolhidos" prefWidth="250"/>
+            <TableColumn fx:id="colTotal" text="Total" prefWidth="80"/>
+        </columns>
+    </TableView>
+
+</VBox>
